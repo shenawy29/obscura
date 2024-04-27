@@ -44,7 +44,7 @@ export default function ChannelPage() {
         return () => {
             socket.off("data", onData);
         };
-    }, [messages]);
+    }, [messages, path]);
 
     return (
         <main className="flex items-center justify-center flex-col">
@@ -56,7 +56,9 @@ export default function ChannelPage() {
                     )}
                 />
                 {messages.map((message) => (
-                    <li className="">{message}</li>
+                    <li key={message} className="">
+                        {message}
+                    </li>
                 ))}
                 <div ref={messagesEndRef} />
             </ul>
